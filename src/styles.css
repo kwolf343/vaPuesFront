@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* Modo oscuro */
+.background{
+    background-color: #000000 !important;
+}
+@media (prefers-color-scheme: dark) {
+/* :root {
+    --p-card-background: #092749 !important;
+    --p-card-color: #ffffff !important;
+    }*/
+
+}
+  
