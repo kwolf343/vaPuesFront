@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { token } from '../../api/interfaces/token.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,17 @@ export class AuthService {
   getToken(): string | null {
     return this.cookieService.get(this.tokenKey) || null;
   }
+
+  getData(): token | null {
+    const token = this.getToken();
+    if (token) {
+      const tkn = this.jwtHelper.decodeToken(token);
+      
+      return {email: tkn.email, rol: tkn.rol, web: tkn.web};
+    }
+    return null;
+  }
+  
 
   private setToken(token: string): void {
     const expirationDate = this.jwtHelper.getTokenExpirationDate(token);

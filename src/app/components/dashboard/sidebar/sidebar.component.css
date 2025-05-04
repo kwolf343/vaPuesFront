@@ -1,0 +1,15 @@
+@media (prefers-color-scheme: dark) {
+    .sidebar-menu a{
+        color: #f6f6f7;
+    }
+    .sidebar-menu li:hover i {
+        color: #9d9fa5;
+    }
+    .sidebar-menu i{
+        color: #6e7075;
+    }
+
+    .user-name:hover i{
+        color: #9d9fa5;
+    }
+}

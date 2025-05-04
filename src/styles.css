@@ -1,2 +1,27 @@
 @import "tailwindcss";
+@import "primeicons/primeicons.css";
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #141b2d;
+    }
+    .p-card-content {
+      background-color: #1f2a3e;
+      border-radius: 10px;
+    }
+    :root {
+        --p-card-background: #1f2a3e!important;
+        --p-inputtext-background: #141b2d!important;
+        --p-panel-background: #1f2a3e!important;
+        --p-content-background: #1f2a3e!important;
+        --p-panel-border-color: transparent!important;
+        --p-content-border-color: transparent!important;
+        --p-tieredmenu-item-focus-background: #1f2d3e!important;
+        --p-menubar-item-focus-background: #1f2d3e!important;
+    }
+
+    .back-color{
+        background-color: #1f2a3e;
+    }
+}
+    

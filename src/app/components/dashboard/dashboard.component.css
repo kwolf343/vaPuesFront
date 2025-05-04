@@ -1,0 +1,7 @@
+/* Alinear 'Cerrar sesión' a la derecha en desktop */
+@media (min-width: 768px) {
+    .p-menubar .logout-item {
+        margin-left: auto;
+    }
+}
+  

@@ -8,6 +8,7 @@ import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
+import { LogoComponent } from './logo/logo.component';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ import { CardModule } from 'primeng/card';
     DividerModule,
     ButtonModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    LogoComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -52,10 +54,9 @@ export class LoginComponent {
     this.loading = true;
     this.error = '';
 
-    this.authService.login(this.loginForm.value).subscribe(
-      success => {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: success => {
         if (success) {
-          console.log("acceso correcto");
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigate([returnUrl]);
         } else {
@@ -63,10 +64,10 @@ export class LoginComponent {
           this.loading = false;
         }
       },
-      error => {
+      error: () => {
         this.error = 'Error en el servidor';
         this.loading = false;
       }
-    );
+    });
   }
 }

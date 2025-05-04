@@ -1,0 +1,23 @@
+button{
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    transition-duration: 300ms;
+}
+button:active {
+    transform: scale(0.95);
+}
+.p-button-1{
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+}
+.p-button-2{
+    background: linear-gradient(to right, #e52d27, #ff6b6b);
+}
+.p-button-3{
+    background: linear-gradient(to right, #11998e, #38ef7d);
+}
+.p-button-4{
+    background: linear-gradient(to right, #f7971e, #ffd200);
+}

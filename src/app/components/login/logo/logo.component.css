@@ -1,0 +1,14 @@
+.vaPuesLetra {
+  font-weight: bold;
+  color: #003b6f;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    .vaPuesLetra {
+        font-weight: bold;
+        color: #dad6d0;
+        text-align: center;
+      }
+}
+  

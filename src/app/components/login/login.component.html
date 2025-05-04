@@ -1,55 +1,70 @@
-<div class="flex flex-col md:flex-row min-h-screen p-4 items-center justify-center md:items-stretch md:justify-start">
-    <!-- Imagen solo visible en pantallas medianas hacia arriba -->
-    <div class="hidden md:flex md:w-6/12 items-center justify-center p-30">
-      <img src="vpLogin.png" alt="Imagen descriptiva" class="w-full h-auto object-cover" />
-    </div>
-  
-    <!-- Formulario de login -->
-    <div class="w-full md:w-6/12 flex items-center justify-center py-5">
-      <p-card class="w-full max-w-lg px-4">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4 px-4 py-5 text-center">
-          <b class="text-3xl">Login</b>
-  
-          <!-- Mostrar error si hay -->
-          <div *ngIf="error" class="alert alert-danger text-red-600">{{ error }}</div>
-  
-          <!-- Campo Email -->
-          <div class="flex flex-col gap-1 mb-1 text-left">
-            <label for="email" class="font-medium">Email</label>
-            <input
-              pInputText
-              type="text"
-              id="email"
-              formControlName="email"
-              class="p-inputtext p-component"
-            />
-          </div>
-  
-          <!-- Campo Contraseña -->
-          <div class="flex flex-col gap-1 mb-1 text-left">
-            <label for="clave" class="font-medium">Contraseña</label>
-            <input
-              pInputText
-              type="password"
-              id="clave"
-              formControlName="clave"
-              class="p-inputtext p-component"
-            />
-          </div>
-  
-          <!-- Botón de enviar -->
-          <button
-            type="submit"
-            pButton
-            label="Iniciar Sesión"
-            icon="pi pi-sign-in"
-            [disabled]="loading"
-            class="mt-7 my-3 w-full mx-auto"
-          >
-            <span *ngIf="loading" class="pi pi-spin pi-spinner mr-2"></span>
-          </button>
-        </form>
-      </p-card>
-    </div>
+<div
+  class="flex flex-col md:flex-row min-h-screen p-4 items-center justify-center md:items-stretch md:justify-start"
+>
+  <!-- Imagen solo visible en pantallas medianas hacia arriba -->
+  <div class="hidden md:flex md:w-6/12 items-center justify-end p-6">
+    <app-logo></app-logo>
   </div>
-  
+  <!-- Formulario de login -->
+  <div class="w-full md:w-6/12 flex items-center justify-center py-5">
+    <p-card class="w-full max-w-lg px-4">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-4 px-4 py-10 text-center"
+      >
+        <b class="text-3xl py-1">Login</b>
+        <!-- Campo Email -->
+        <div class="flex flex-col gap-1 my-1 text-left">
+          <label for="email" class="font-medium">Email</label>
+          <input
+            pInputText
+            type="text"
+            id="email"
+            formControlName="email"
+            class="p-inputtext p-component mb-3"
+          />
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div class="flex flex-col gap-1 mb-1 text-left">
+          <label for="clave" class="font-medium">Contraseña</label>
+          <input
+            pInputText
+            type="password"
+            id="clave"
+            formControlName="clave"
+            class="p-inputtext p-component"
+          />
+        </div>
+        <!-- Botón de enviar -->
+        <button
+          type="submit"
+          pButton
+          label="Iniciar Sesión"
+          [disabled]="loading"
+          style="background-color: rgb(20, 81, 105); color: white; border: none"
+          class="mt-7 my-0 w-full mx-auto hover:bg-[#e69710] transition-colors duration-200 shadow-md rounded-md font-semibold"
+        >
+          <span *ngIf="loading" class="pi pi-spin pi-spinner mr-2"></span>
+        </button>
+        <!-- Mostrar error si hay -->
+        <div
+          class="alert alert-danger text-red-600 min-h-[1.5rem] transition-opacity duration-300"
+          [ngClass]="{
+            'opacity-100 visible': error,
+            'opacity-0 invisible': !error
+          }"
+        >
+          {{ error }}
+        </div>
+        <div class="text-sm">
+          ¿No tienes una cuenta?
+          <a href="/registro" class="text-blue-600 hover:underline"
+            >Regístrate aquí</a
+          >
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
