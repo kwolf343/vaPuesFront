@@ -15,8 +15,8 @@ import { access, user } from '../../api/interfaces/users.interface';
 export class DashboardComponent {
   items: access[] = [];
   config: boolean = false;
-  user: user = {email: '', first_names: '', last_names: '', document: '', is_admin: false, userAccess: []};
-
+  user: string = '';
+  
   constructor(
       private usersService: UsersService,
       private authService: AuthService
@@ -28,7 +28,9 @@ export class DashboardComponent {
     this.usersService.obtenerUsuarioPorEmail(mail).subscribe({
       next: (response) => {
           let list: access[] = response.userAccess;
-          this.user = response;
+          const firstName = response.first_names.split(' ')[0] || '';
+          const lastName = response.last_names.split(' ')[0] || '';
+          this.user = firstName + ' ' + lastName;
           
           const index = list.findIndex(item => item.access === 'Configuración');
           if (index !== -1) {

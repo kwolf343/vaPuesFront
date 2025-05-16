@@ -1,11 +1,11 @@
 <div class="p-3 h-screen flex flex-col">
   <div>
-    <app-menu [config]="config"></app-menu>
+    <app-menu [config]="config" [user]="user"></app-menu>
   </div>
   <div class="flex-1 overflow-hidden pt-3 h-0">
     <div class="flex flex-col md:flex-row gap-3 h-full">
       <div class="w-full md:w-1/4">
-        <app-panel [items]="items" [user]="user"></app-panel>
+        <app-sidebar [items]="items"></app-sidebar>
       </div>
       <div class="w-full md:w-3/4 overflow-auto h-full">
         <div class="rounded-md h-full">

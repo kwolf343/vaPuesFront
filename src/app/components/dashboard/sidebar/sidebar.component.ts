@@ -1,17 +1,16 @@
-import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { access, user } from '../../../api/interfaces/users.interface';
-import { Toast } from 'primeng/toast';
+import { access } from '../../../api/interfaces/users.interface';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../modules/auth/auth.service';
 
 @Component({
-  selector: 'app-panel',
+  selector: 'app-sidebar',
   standalone: true,
   imports: [
-    Toast,
     ButtonModule,
     AvatarModule,
     RouterModule,
@@ -21,20 +20,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
-export class SidebarComponent implements OnChanges {
+export class SidebarComponent {
   @Input() items: access[] | undefined;
-  @Input() user: user = {email: '', first_names: '', last_names: '', document: '', is_admin: false, userAccess: []};
   @Input() isAdmin: boolean = false;
   visible: boolean = false;
-  userName: string = '';
 
-  constructor(private messageService: MessageService) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const firstName = this.user.first_names.split(' ')[0] || '';
-    const lastName = this.user.last_names.split(' ')[0] || '';
-    this.userName = `${firstName} ${lastName}`;
-  }
+  constructor(
+    private messageService: MessageService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   showConfirm() {
     if (!this.visible) {
@@ -55,5 +50,10 @@ export class SidebarComponent implements OnChanges {
   onReject() {
     this.messageService.clear('confirm');
     this.visible = false;
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

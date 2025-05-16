@@ -1,8 +1,8 @@
 <p-menubar [model]="items">
     <ng-template pTemplate="end">
-      <a class="p-menuitem-link hover:text-gray-500 transition-colors duration-200 cursor-pointer" (click)="logout()">
-        <span class="p-menuitem-icon pi pi-sign-out"></span>
-        <span class="p-menuitem-text">Cerrar sesión</span>
+      <a class="p-menuitem-link mr-2">
+        <span class="p-menuitem-icon pi pi-user mr-2" style="color: #6e7075;"></span>
+        <span class="p-menuitem-text" style="color: #ffffff;">{{user}}</span>
       </a>
     </ng-template>
 </p-menubar>

@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { AuthService } from '../../../modules/auth/auth.service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
@@ -17,12 +16,10 @@ import { Menubar } from 'primeng/menubar';
 })
 export class MenuComponent implements OnChanges {
   @Input() config: boolean = false;
+  @Input() user: string = '';
   items: MenuItem[] = [];
   
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
 
   ngOnChanges(changes: SimpleChanges) {
@@ -66,10 +63,5 @@ export class MenuComponent implements OnChanges {
       icon: 'pi pi-envelope',
       routerLink: ['/contact']
     });
-  }
-
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
   }
 }
