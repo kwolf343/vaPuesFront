@@ -3,20 +3,14 @@
     <ul class="flex flex-row md:flex-col gap-5 md:gap-1 items-center md:items-start">
       @for(item of items; track item.link){
       <li>
-        <a
-          [routerLink]="item.link"
-          class="hover:bg-[#1f2d3e] flex items-center justify-center md:justify-start px-3 py-2 rounded-md"
-        >
+        <a [routerLink]="item.link" class="hover:bg-[#1f2d3e] flex items-center justify-center md:justify-start px-3 py-2 rounded-md">
           <i class="pi text-xl" [ngClass]="item.icon"></i>
           <span class="hidden md:inline ml-2">{{ item.access }}</span>
         </a>
       </li>
       }
       <li class="md:hidden">
-        <a
-          (click)="showConfirm()"
-          class="cursor-pointer px-3 py-2 rounded-md user-name flex items-center justify-center"
-        >
+        <a (click)="showConfirm()" class="cursor-pointer px-3 py-2 rounded-md user-name flex items-center justify-center">
           <i class="pi pi-user text-xl"></i>
         </a>
       </li>
@@ -26,9 +20,7 @@
       <i class="pi pi-sign-out text-xl"></i>
       <span class="ml-2">Cerrar sesión</span>
     </a>
-    <a
-  (click)="logout()"
-  class="md:hidden cursor-pointer px-3 py-2 rounded-md user-name flex items-center justify-center">
+    <a (click)="logout()" class="md:hidden cursor-pointer px-3 py-2 rounded-md user-name flex items-center justify-center">
   <i class="pi pi-sign-out"></i>
 </a>
   </div>

@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './administracion.component.html',
   styleUrl: './administracion.component.css'
 })
-export class AdministracionComponent {
 
+export class AdministracionComponent {
+  categorias = ['Tecnología', 'Cocina', 'Salud', 'Deportes'];
 }
